@@ -37,12 +37,12 @@ export default function NavBar() {
         {
             classdata.map((item)=>{
                 return(
-                <NavDropdown.Item>{'Class:' +item.Standard}</NavDropdown.Item>
+                <NavDropdown.Item><Link style={{color:'black'}} to={`/class/${item._id}`} >{'Class:' +item.Standard}</Link></NavDropdown.Item>
                 )
             })
         }
           <NavDropdown.Divider />
-    <NavDropdown.Item> <Link to="/createClass">Create Class +</Link></NavDropdown.Item>
+    <NavDropdown.Item> <Link style={{color:'black'}} to="/createClass">Create Class +</Link></NavDropdown.Item>
         </NavDropdown>
       </Nav>
     </Navbar.Collapse>
