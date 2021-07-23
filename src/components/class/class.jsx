@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
 import {Link} from 'react-router-dom';
+import AddStudent from './addstudent';
 const Class = ()=>{
  
     const {classid} = useParams();
@@ -30,6 +31,7 @@ const Class = ()=>{
                      .then(res=>res.json())
                      .then(data=>{
                          setStudentinfo(data.result);
+                        
                      }).catch(err=>{
                          console.log(err);
                      })
@@ -67,6 +69,7 @@ const Class = ()=>{
       }
         <Dropdown.Divider />
         <Dropdown.Item eventKey="4"><Link to="/addstudent">Add Student +</Link></Dropdown.Item>
+
       </DropdownButton>
       </div>
         </div>
