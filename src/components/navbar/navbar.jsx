@@ -3,8 +3,7 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import Container from 'react-bootstrap/Container';
-import {BrowserRouter as Router , Route, Link} from 'react-router-dom';
-import Home from '../home/home';
+import {BrowserRouter as Router ,Link} from 'react-router-dom';
 
 export default function NavBar() {
 
@@ -25,11 +24,7 @@ export default function NavBar() {
   return (
     <Navbar variant="dark" bg="dark" expand="lg">
   <Container fluid>
-  <Router>
-    <Link to='/'><Navbar.Brand href="#home">AMS</Navbar.Brand> </Link>
-
-    <Route exact path='/' component={Home}></Route>
-    </Router>
+    <Navbar.Brand><Link to="/">AMS</Link></Navbar.Brand>
     <Navbar.Toggle aria-controls="navbar-dark-example" />
     <Navbar.Collapse id="navbar-dark-example">
    
@@ -47,9 +42,7 @@ export default function NavBar() {
             })
         }
           <NavDropdown.Divider />
-          <Router>
-    <NavDropdown.Item> <Link to= '/createClass'>Create Class +</Link></NavDropdown.Item>
-          </Router>
+    <NavDropdown.Item> <Link to="/createClass">Create Class +</Link></NavDropdown.Item>
         </NavDropdown>
       </Nav>
     </Navbar.Collapse>
