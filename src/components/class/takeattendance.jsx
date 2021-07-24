@@ -51,6 +51,30 @@ const TakeAttendance = ()=>{
         })
     }
    
+    const Absent = (id)=>{
+        fetch(`/attendance/absent/${attendanceData.result._id}`,{
+            method:'put',
+            headers:{
+                'Content-Type':'application/json'
+            },
+            body:JSON.stringify({
+                _id:id
+            })
+        }).then(res=>res.json())
+        .then(data=>{
+            console.log(data);
+            if(data.error){
+                M.toast({html:data.message,classes:"#e53935 red darken-1"});
+          }
+          else{
+              M.toast({html:data.message,classes:"#4caf50 green"});
+          }
+        }).catch(err=>{
+            console.log(err);
+        })
+    }
+   
+
     return(
         <div>
         {
@@ -61,7 +85,7 @@ const TakeAttendance = ()=>{
                       aria-label="Recipient's username with two button addons"
                     />
                     <Button variant="outline-secondary" onClick={()=>Present(item._id)}>Present</Button>
-                    <Button variant="outline-secondary">Absent</Button>
+                    <Button variant="outline-secondary" onClick={()=>Absent(item._id)}>Absent</Button>
                   </InputGroup>
                 )
             })
