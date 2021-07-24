@@ -73,6 +73,11 @@ const TakeAttendance = ()=>{
             console.log(err);
         })
     }
+
+    const Submit = ()=>{
+        localStorage.clear();
+        history.push('/');
+    }
    
 
     return(
@@ -91,7 +96,7 @@ const TakeAttendance = ()=>{
             })
         }
         <div>
-        <Button variant="secondary">Submit</Button>
+        <Button variant="secondary" onClick={()=>Submit()}>Submit</Button>
         </div>
         
         </div>
