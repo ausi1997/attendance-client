@@ -9,6 +9,7 @@ const Class = ()=>{
     const {classid} = useParams();
     const [classinfo ,setClassinfo] = useState([]);
     const [studentinfo , setStudentinfo] = useState([]);
+    const [teacherinfo , setTeacherinfo] = useState([]);
 
     useEffect(()=>{
         fetch(`/class/view/${classid}`)
@@ -38,6 +39,21 @@ const Class = ()=>{
                  )
              })
     }
+
+    const viewTeacher = ()=>{
+        classinfo && classinfo.map((item)=>{
+            return(
+                fetch(`/teacher/view/${item._id}`)
+                .then(res=>res.json())
+                .then(data=>{
+                    setTeacherinfo(data.result);
+                }).catch(err=>{
+                    console.log(err);
+                })
+            )
+        })
+}
+
     return(
         <div>
         {
@@ -54,7 +70,7 @@ const Class = ()=>{
             })
         
         }
-        <div style={{marginTop:'30px', marginLeft:'50px'}}>
+        <div style={{marginTop:'30px', marginLeft:'50px' , display:"flex"}}>
         <DropdownButton
         onClick={()=>viewStudent()}
        variant='secondary'
@@ -69,6 +85,24 @@ const Class = ()=>{
       }
         <Dropdown.Divider />
         <Dropdown.Item eventKey="4"><Link to="/addstudent">Add Student +</Link></Dropdown.Item>
+
+      </DropdownButton>
+
+
+      <DropdownButton style={{marginLeft:'700px'}}
+        onClick={()=>viewTeacher()}
+       variant='secondary'
+        title="All Teachers"
+        id="dropdown-menu-align-right"
+      >  {
+          teacherinfo && teacherinfo.map((item)=>{
+              return(
+                <Dropdown.Item >{item.Name}</Dropdown.Item>
+              )
+          })
+      }
+        <Dropdown.Divider />
+        <Dropdown.Item eventKey="4"><Link to="/addteacher">Add Teacher +</Link></Dropdown.Item>
 
       </DropdownButton>
       </div>
