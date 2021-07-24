@@ -8,6 +8,8 @@ import Home from './components/home/home';
 import Class from './components/class/class';
 import AddStudent from './components/class/addstudent';
 import AddTeacher from './components/class/addteacher';
+import Attendance from './components/class/attendance';
+import TakeAttendance from './components/class/takeattendance';
 
 function App() {
   return (
@@ -20,6 +22,7 @@ function App() {
     <Route path='/class/:classid' component={Class}></Route>
     <Route path='/addstudent' component={AddStudent}></Route>
     <Route path='/addteacher' component={AddTeacher}></Route>
+    <Route path='/takeattendance' component={TakeAttendance}></Route>
     </switch>
     </Router>
     </div>

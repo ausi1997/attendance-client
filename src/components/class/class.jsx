@@ -4,6 +4,8 @@ import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
 import {Link} from 'react-router-dom';
 import AddStudent from './addstudent';
+import { Button } from 'bootstrap';
+import Attendance from './attendance';
 const Class = ()=>{
  
     const {classid} = useParams();
@@ -106,6 +108,7 @@ const Class = ()=>{
 
       </DropdownButton>
       </div>
+      <Attendance classinfo={classinfo}></Attendance>
         </div>
     )
 }
